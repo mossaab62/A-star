@@ -19,8 +19,6 @@ def intersec(M,s):                        # trouver les issues autour d'un somme
     else :                               # 4 issues => intersection, 3 chemins possibles
         return("fullcorner",4)
 
-
-
 def sommet(M,s,Ma,parcouru,debut,arrive):          # en partant d'un sommet donné donne toutes les liaisons et leur distance
     c="continuer"
                                                    # Ma :liste des sommets
