@@ -1,5 +1,6 @@
 ﻿import numpy as np
 
+print("hello")
 def intersec(M,s):                        # trouver les issues autour d'un sommet s
     d=0                                   # nombre d'issues
     i=0                                   # un compteur
