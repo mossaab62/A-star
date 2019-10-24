@@ -19,6 +19,7 @@ int rand_a_b(int a, int b){
 	return(rand()%(b-a) +a);
 }
 
+/*Fonctions inutile de germain
 void rdLab(LAB l){
 	int i=0;
 	int j=0;
@@ -27,5 +28,6 @@ void rdLab(LAB l){
 			l[i][j]=rand_a_b(0,2);
 		}
 	}
-}
-			
+}*/
+
+/* Placement des bloques obstacle */

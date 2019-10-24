@@ -11,4 +11,4 @@ void Lab1(LAB);
 
 int rand_a_b(int, int);
 
-void rdLab(LAB);
+/* void rdLab(LAB); */
