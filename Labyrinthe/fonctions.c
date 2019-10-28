@@ -129,11 +129,9 @@ void position_min(DIS dist,POSMIN positionmin){
 void parcour(LAB l,LIS pos){
 	int i=pos[0] ;
 	int j=pos[1];
-	int a=pos[2];
-	int b=pos[3];
 	DIS dist;
 	POSMIN positionmin;
-	while((i!=a) && (j!=b)){
+	while((i!= pos[2]) && (j!=pos[3])){
 		//si il n'est pas possible d'aller dans un dirrection la valeur reste a 1000, etant superieu au distance que l'on calcule elle ne peux jamais etre choisi comme min
 		dist[0]=dist[1]=dist[2]=dist[3]=dist[4]=dist[5]=dist[6]=dist[7]=1000;
 		if(i-1>=0 && j-1>=0 && i-1<=10 && j-1<=10 &&  l[i-1][j-1]==0 ) dist[0]=distance(i-1,j-1,pos[2],pos[3]);
