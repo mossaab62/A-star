@@ -31,5 +31,5 @@ float distance(int ya, int xa,int yb ,int xb);
 //exemple: si le chemin le plus court et en haut -> posmin={-1,0} -> i+=-1 j+=0 dans la fonction parcour
 void position_min(DIS,POSMIN);
 
-//fait le parcour le plus cour pour aller du point de depart au point d'arrive
+//fait le parcour le plus scour pour aller du point de depart au point d'arrive
 void parcour(LAB,LIS);

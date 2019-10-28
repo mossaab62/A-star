@@ -94,6 +94,7 @@ void printLAB(LAB l){
         printf("\n");
 
     }
+	printf("\n");
 }
 
 /* Calcule distance euclidienne entre 2 point*/
@@ -115,6 +116,7 @@ void position_min(DIS dist,POSMIN positionmin){
 			min=dist[j],i=j;
 		}
 	}
+
 	if (i==0) positionmin[0]=-1,positionmin[1]=-1 ;
 	if (i==1) positionmin[0]=-1,positionmin[1]=0  ;
 	if (i==2) positionmin[0]=-1,positionmin[1]=+1 ;
@@ -127,25 +129,32 @@ void position_min(DIS dist,POSMIN positionmin){
 
 //Trace le chemin le plus court vers le point d'arrive
 void parcour(LAB l,LIS pos){
-	int i=pos[0] ;
+	int i=pos[0];
 	int j=pos[1];
+	int a=0;
 	DIS dist;
 	POSMIN positionmin;
-	while((i!= pos[2]) && (j!=pos[3])){
+	while((i!=pos[2] || j!=pos[3]) && a < 50){
 		//si il n'est pas possible d'aller dans un dirrection la valeur reste a 1000, etant superieu au distance que l'on calcule elle ne peux jamais etre choisi comme min
 		dist[0]=dist[1]=dist[2]=dist[3]=dist[4]=dist[5]=dist[6]=dist[7]=1000;
-		if(i-1>=0 && j-1>=0 && i-1<=10 && j-1<=10 &&  l[i-1][j-1]==0 ) dist[0]=distance(i-1,j-1,pos[2],pos[3]);
-		if(i-1>=0 && j>=0   && i-1<=10 && j<=10   &&  l[i-1][j]==0 )   dist[1]=distance(i-1,j,pos[2],pos[3]);
-		if(i-1>=0 && j+1>=0 && i-1<=10 && j+1<=10 &&  l[i-1][j+1]==0 ) dist[2]=distance(i-1,j+1,pos[2],pos[3]);
-		if(i>=0   && j-1>=0 && i<=10   && j-1<=10 &&  l[i][j-1]==0 )   dist[3]=distance(i,j-1,pos[2],pos[3]);
-		if(i>=0   && j+1>=0 && i<=10   && j+1<=10 &&  l[i][j+1]==0 )   dist[4]=distance(i,j+1,pos[2],pos[3]);
-		if(i+1>=0 && j-1>=0 && i+1<=10 && j-1<=10 &&  l[i+1][j-1]==0 ) dist[5]=distance(i+1,j-1,pos[2],pos[3]);
-		if(i+1>=0 && j>=0   && i+1<=10 && j<=10   &&  l[i+1][j]==0 )   dist[6]=distance(i+1,j,pos[2],pos[3]);
-		if(i+1>=0 && j+1>=0 && i+1<=10 && j+1<=10 &&  l[i+1][j+1]==0 ) dist[7]=distance(i+1,j+1,pos[2],pos[3]);
+
+		if(i-1>=0 && j-1>=0 && i-1<10 && j-1<10 &&  l[i-1][j-1]!=1  ) dist[0]=distance(i-1,j-1,pos[2],pos[3]);
+		if(i-1>=0 && j>=0   && i-1<10 && j<10   &&  l[i-1][j]!=1)   dist[1]=distance(i-1,j,pos[2],pos[3]);
+		if(i-1>=0 && j+1>=0 && i-1<10 && j+1<10 &&  l[i-1][j+1]!=1) dist[2]=distance(i-1,j+1,pos[2],pos[3]);
+		if(i>=0   && j-1>=0 && i<10   && j-1<10 &&  l[i][j-1]!=1)   dist[3]=distance(i,j-1,pos[2],pos[3]);
+		if(i>=0   && j+1>=0 && i<10   && j+1<10 &&  l[i][j+1]!=1)   dist[4]=distance(i,j+1,pos[2],pos[3]);
+		if(i+1>=0 && j-1>=0 && i+1<10 && j-1<10 &&  l[i+1][j-1]!=1) dist[5]=distance(i+1,j-1,pos[2],pos[3]);
+		if(i+1>=0 && j>=0   && i+1<10 && j<10   &&  l[i+1][j]!=1)   dist[6]=distancer(i+1,j,pos[2],pos[3]);
+		if(i+1>=0 && j+1>=0 && i+1<10 && j+1<10 &&  l[i+1][j+1]!=1) dist[7]=distance(i+1,j+1,pos[2],pos[3]);
 		//Recherche du min et moddification de i et j
 		position_min(dist,positionmin);
 		i+=positionmin[0];
 		j+=positionmin[1];
-		l[i][j]=3;
+		if (l[i][j]!=4)
+		{
+			l[i][j]=3;
+		}
+		a++;
+		printLAB(l);
 	}
 }
